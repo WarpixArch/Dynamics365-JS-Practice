@@ -1,132 +1,149 @@
-// ==========================
+// =====================================================
 // SHOW FIELD
-// ==========================
+// Purpose:
+// Makes a field visible on the form.
+//
+// Example:
+// Show Revenue when Account Type = Customer
+// =====================================================
 function showRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getControl("revenue").setVisible(true);
 }
 
-// ==========================
+// =====================================================
 // HIDE FIELD
-// ==========================
+// Purpose:
+// Hides a field from the form.
+//
+// Example:
+// Hide Revenue when Account Type = Prospect
+// =====================================================
 function hideRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getControl("revenue").setVisible(false);
 }
 
-// ==========================
+// =====================================================
 // ENABLE FIELD
-// ==========================
+// Purpose:
+// Allows users to edit the field.
+// =====================================================
 function enableRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getControl("revenue").setDisabled(false);
 }
 
-// ==========================
+// =====================================================
 // DISABLE FIELD
-// ==========================
+// Purpose:
+// Makes a field read-only.
+// Field remains visible but cannot be edited.
+// =====================================================
 function disableRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getControl("revenue").setDisabled(true);
 }
 
-// ==========================
+// =====================================================
 // GET FIELD VALUE
-// ==========================
+// Purpose:
+// Reads the current value from a field.
+// =====================================================
 function getRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
-    var revenue = formContext.getAttribute("revenue").getValue();
+    var revenue =
+        formContext.getAttribute("revenue").getValue();
 
-    console.log("Revenue:", revenue);
+    console.log(revenue);
 
     return revenue;
 }
 
-// ==========================
+// =====================================================
 // SET FIELD VALUE
-// ==========================
+// Purpose:
+// Updates the value of a field.
+// =====================================================
 function setRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getAttribute("revenue").setValue(100000);
 }
 
-// ==========================
-// REQUIRED FIELD
-// ==========================
+// =====================================================
+// CLEAR FIELD VALUE
+// Purpose:
+// Removes existing value from the field.
+// =====================================================
+function clearRevenue(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    formContext.getAttribute("revenue").setValue(null);
+}
+
+// =====================================================
+// REQUIRED LEVEL - REQUIRED
+// Purpose:
+// User must provide a value before saving.
+//
+// Interview Question:
+// What are the available requirement levels?
+//
+// Answer:
+// required
+// recommended
+// none
+// =====================================================
 function makeRequired(executionContext) {
     var formContext = executionContext.getFormContext();
 
-    formContext.getAttribute("revenue")
+    formContext
+        .getAttribute("revenue")
         .setRequiredLevel("required");
 }
 
-// ==========================
-// RECOMMENDED FIELD
-// ==========================
+// =====================================================
+// REQUIRED LEVEL - RECOMMENDED
+// Purpose:
+// Shows blue '+' icon but user can still save.
+// =====================================================
 function makeRecommended(executionContext) {
     var formContext = executionContext.getFormContext();
 
-    formContext.getAttribute("revenue")
+    formContext
+        .getAttribute("revenue")
         .setRequiredLevel("recommended");
 }
 
-// ==========================
-// OPTIONAL FIELD
-// ==========================
+// =====================================================
+// REQUIRED LEVEL - OPTIONAL
+// Purpose:
+// Removes any requirement.
+// =====================================================
 function makeOptional(executionContext) {
     var formContext = executionContext.getFormContext();
 
-    formContext.getAttribute("revenue")
+    formContext
+        .getAttribute("revenue")
         .setRequiredLevel("none");
 }
 
-// ==========================
+// =====================================================
 // SET FOCUS
-// ==========================
+// Purpose:
+// Places cursor on the field.
+// Useful during validations.
+// =====================================================
 function focusRevenue(executionContext) {
     var formContext = executionContext.getFormContext();
 
     formContext.getControl("revenue").setFocus();
 }
 
-// ==========================
-// GET FIELD LABEL
-// ==========================
-function getRevenueLabel(executionContext) {
-    var formContext = executionContext.getFormContext();
-
-    var label = formContext.getControl("revenue").getLabel();
-
-    console.log("Label:", label);
-
-    return label;
-}
-
-// ==========================
-// SET FIELD LABEL
-// ==========================
-function setRevenueLabel(executionContext) {
-    var formContext = executionContext.getFormContext();
-
-    formContext.getControl("revenue")
-        .setLabel("Annual Revenue");
-}
-
-// ==========================
-// GET FORM TYPE
-// ==========================
-function getFormType(executionContext) {
-    var formContext = executionContext.getFormContext();
-
-    var formType = formContext.ui.getFormType();
-
-    console.log("Form Type:", formType);
-
-    return formType;
-}
+// ==========================================
